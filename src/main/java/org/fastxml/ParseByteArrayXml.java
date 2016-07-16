@@ -115,7 +115,8 @@ public class ParseByteArrayXml {
         }
     }
 
-    // tagName and attribute name
+    // tagName and attribute name.
+    // In this way, we has no need to decode tagName and attribute name
     private static byte[] root = "root".getBytes();
     private static byte[] env_student = "env:student".getBytes();
     private static byte[] env_id = "env:id".getBytes();
@@ -156,7 +157,7 @@ public class ParseByteArrayXml {
 
     public static void processStudentElements(FastXmlParser parser, List<Student> students) throws ParseException {
         do {
-            parser.next(); // START_TAG: student
+            parser.next(); // START_TAG: "env:student"
             if (parser.isMatch(env_student)) { // tagName has namespace: "env:student", just consider it as a string
                 Student studentObj = new Student();
                 if (parser.getNextEvent() == FastXmlParser.ATTRIBUTE_NAME) {
