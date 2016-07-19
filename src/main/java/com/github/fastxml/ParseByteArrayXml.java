@@ -1,6 +1,6 @@
-package org.fastxml;
+package com.github.fastxml;
 
-import org.fastxml.exception.ParseException;
+import com.github.fastxml.exception.ParseException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -166,7 +166,7 @@ public class ParseByteArrayXml {
                 if (parser.getNextEvent() == FastXmlParser.START_TAG) {
                     processStudentChildren(parser, studentObj);
                 } else {
-                    throw ParseException.formatError("student info is empty", parser.getRow(), parser.getColumn());
+                    throw ParseException.formatError("student info is empty", parser);
                 }
                 students.add(studentObj);
             }
@@ -183,7 +183,7 @@ public class ParseByteArrayXml {
             } else if (parser.isMatch(env_group) && parser.next() == FastXmlParser.ATTRIBUTE_VALUE) {
                 studentObj.setGroup(parser.getInt());
             } else {
-                throw ParseException.formatError("invalid attribute name: " + parser.getString(), parser.getRow(), parser.getColumn());
+                throw ParseException.formatError("invalid attribute name: " + parser.getString(), parser);
             }
         } while (parser.getNextEvent() == FastXmlParser.ATTRIBUTE_NAME);
     }
@@ -193,7 +193,7 @@ public class ParseByteArrayXml {
             parser.next(); // START_TAG
             if (parser.isMatch(name) && parser.getNextEvent() == FastXmlParser.TEXT) {
                 parser.next(); // text
-                studentObj.setName(parser.getString(true)); // need decode
+                studentObj.setName(parser.getStringWithDecoding()); // need decode
                 parser.next(); // END_TAG
             } else if (parser.isMatch(sex) && parser.getNextEvent() == FastXmlParser.TEXT) {
                 parser.next(); // text
@@ -220,7 +220,7 @@ public class ParseByteArrayXml {
         do {
             parser.next();
             if (parser.isMatch(city) && parser.next() == FastXmlParser.ATTRIBUTE_VALUE) {
-                studentObj.setCity(parser.getString(true));
+                studentObj.setCity(parser.getStringWithDecoding());
             } else {
                 parser.next();// ATTIBUTE_VALUE
             }
