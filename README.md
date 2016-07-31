@@ -3,6 +3,25 @@
 FastXml is pull based, so the API is similar with [xmlpull](http://www.xmlpull.org/v1/download/unpacked/doc/quick_intro.html),
 but FastXml is more easier to use.
 
+## Dependency
+
+* Maven dependency
+
+```
+<dependency>
+    <groupId>com.github.fastxml</groupId>
+    <artifactId>fastxml</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+
+* Gradle/Grail
+```
+compile 'com.github.fastxml:fastxml:1.0.0'
+```
+
+* Other: http://search.maven.org/#artifactdetails%7Ccom.github.fastxml%7Cfastxml%7C1.0.0%7Cjar
+
 ## API
 
 All APIs are in [`com.github.fastxml.FastXmlParser`](https://github.com/fastxml/fastxml/blob/master/src/main/java/com.github.fastxml/FastXmlParser.java) interface.
@@ -10,7 +29,11 @@ All APIs are in [`com.github.fastxml.FastXmlParser`](https://github.com/fastxml/
 ## Create a `FastXmlParser` instance
 
 ```
+// FastXml parser will use the charset defined in document declaration,
+// if no charset defined, then utf-8 will be used
 FastXmlParser parser = FastXmlFactory.newInstance(byte[] byteArray)
+
+// FastXml parser will use the charset specified in parameters
 FastXmlParser parser = FastXmlFactory.newInstance(byte[] byteArray, Charset charset)
 ```
 `byte[] byteArray` is read from xml document.
