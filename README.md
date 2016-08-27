@@ -24,7 +24,7 @@ compile 'com.github.fastxml:fastxml:1.0.0'
 
 ## API
 
-All APIs are in [`com.github.fastxml.FastXmlParser`](https://github.com/fastxml/fastxml/blob/master/src/main/java/com.github.fastxml/FastXmlParser.java) interface.
+All APIs are in [`com.github.fastxml.FastXmlParser`](https://github.com/fastxml/fastxml/blob/master/src/main/java/com/github/fastxml/FastXmlParser.java) interface.
 
 ## Create a `FastXmlParser` instance
 
