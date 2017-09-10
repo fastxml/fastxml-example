@@ -7,7 +7,7 @@ but FastXml is more easier to use.
 
 * Maven dependency
 
-```
+```xml
 <dependency>
     <groupId>com.github.fastxml</groupId>
     <artifactId>fastxml</artifactId>
@@ -16,7 +16,7 @@ but FastXml is more easier to use.
 ```
 
 * Gradle/Grail
-```
+```Gradle
 compile 'com.github.fastxml:fastxml:1.0.0'
 ```
 
@@ -28,7 +28,7 @@ All APIs are in [`com.github.fastxml.FastXmlParser`](https://github.com/fastxml/
 
 ## Create a `FastXmlParser` instance
 
-```
+```java
 // FastXml parser will use the charset defined in document declaration,
 // if no charset defined, then utf-8 will be used
 FastXmlParser parser = FastXmlFactory.newInstance(byte[] byteArray)
@@ -43,7 +43,7 @@ FastXmlParser parser = FastXmlFactory.newInstance(byte[] byteArray, Charset char
 Here is a example to show main features of FastXml.
 In this example, we read student information from xml to build a `Student` object list.
 
-```
+```java
 import com.github.fastxml.exception.ParseException;
 
 import java.util.ArrayList;
